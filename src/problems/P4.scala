@@ -52,7 +52,7 @@ object P4 {
     while (x > limit) {
 
       val loop = new Breaks;
-      var y: Int = 999;
+      var y: Int = x;
 
       loop.breakable {
         while (y > limit) {
