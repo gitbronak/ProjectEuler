@@ -1,5 +1,7 @@
 package utils
 
+import java.math._
+
 /**
  * @author Ronak
  */
@@ -32,5 +34,23 @@ object MathHelper {
       }
     }
     return true;
+  }
+
+  def sumOfSquares(range: Int): Long = {
+
+    var sum: Long = 0;
+
+    for (i <- 1 to range) {
+      sum += (Math.pow(i, 2)).toLong;
+    }
+    return sum;
+  }
+
+  def SquareOfSum(range: Int): Long = {
+    val half: Double = range / 2;
+
+    val sum: Long = ((1 + range) * half).toLong;
+
+    return (Math.pow(sum, 2)).toLong;
   }
 }
