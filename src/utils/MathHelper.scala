@@ -25,11 +25,11 @@ object MathHelper {
       var limit: Long = x;
       var index: Long = 2;
 
-      while (index < limit) {
+      while (index <= limit) {
         if (x % index == 0) {
           return false;
         }
-        limit = limit / index;
+        limit = x / index;
         index += 1;
       }
     }
