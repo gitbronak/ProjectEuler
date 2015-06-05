@@ -4,6 +4,8 @@ import utils.MathHelper
 
 /**
  * @author Ronak
+ * 
+ * What is the 10 001st prime number?
  */
 
 object P7 {

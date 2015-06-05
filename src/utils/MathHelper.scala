@@ -53,4 +53,21 @@ object MathHelper {
 
     return (Math.pow(sum, 2)).toLong;
   }
+
+  /**
+   * Find Pythagorean triplet using m and n when m<n
+   *
+   * a = n2 - m2
+   * b = 2nm
+   * c = n2 + m2
+   *
+   */
+  def findPythagoreanTriplet(m: Int, n: Int): Array[Long] = {
+
+    val a: Long = (Math.pow(n, 2) - Math.pow(m, 2)).toLong;
+    val b: Long = 2 * n * m;
+    val c: Long = (Math.pow(n, 2) + Math.pow(m, 2)).toLong;
+
+    return Array(a, b, c);
+  }
 }
