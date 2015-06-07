@@ -19,6 +19,8 @@ object MathHelper {
   }
 
   def isPrime(x: Long): Boolean = {
+    if (x < 2)
+      return false;
     if (x == 2)
       return true;
     else {
@@ -69,5 +71,26 @@ object MathHelper {
     val c: Long = (Math.pow(n, 2) + Math.pow(m, 2)).toLong;
 
     return Array(a, b, c);
+  }
+
+  def getNumberofDivisors(value: Long): Int = {
+    var numOfDivisors: Int = 1;
+    if (value > 1)
+      numOfDivisors += 1;
+
+    var limit: Long = value;
+    var index: Long = 2;
+
+    while (index < limit) {
+      if (value % index == 0) {
+        numOfDivisors += 1;
+        if (index * index != value)
+          numOfDivisors += 1;
+      }
+      limit = value / index;
+      index += 1;
+    }
+
+    return numOfDivisors;
   }
 }
