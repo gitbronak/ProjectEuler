@@ -1,7 +1,7 @@
 package utils
 
 import java.math._
-import java.util._
+import java.util.HashMap
 
 /**
  * @author Ronak
@@ -116,23 +116,22 @@ object MathHelper {
   def getCollatzSequenceLength(value: Long, cacheHash: HashMap[Long, Long]): Long = {
 
     var len: Long = 0;
-    
-    if (value == 1) {
-      return 1;
-    }
+    var v:Long = value;
 
-    if (cacheHash.containsKey(value))
-      return cacheHash.get(value);
-    else {
-      if (value % 2 == 0) {
-        len = getCollatzSequenceLength((value / 2), cacheHash);
-        cacheHash.put(value, len + 1);
-        return (len + 1);
-      } else {
-        len = getCollatzSequenceLength(((3 * value) + 1), cacheHash);
-        cacheHash.put(value, len + 1);
-        return (len + 1);
+    while (v != 1) {
+      if(v < value){
+        cacheHash.put(value, cacheHash.get(v) + len);
+        return cacheHash.get(v) + len;
       }
+        
+      if (v % 2 == 0)
+        v /= 2;
+      else
+        v = (3 * v) + 1;
+      len += 1;
     }
+    
+    cacheHash.put(value, len);
+    return len;
   }
 }

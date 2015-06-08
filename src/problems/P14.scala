@@ -13,7 +13,7 @@ import java.util._
 object P14 {
 
   def main(args: Array[String]) {
-
+    var timess: Long = System.currentTimeMillis;
     var longS: Long = 0;
     var longNum: Int = 0;
 
@@ -32,5 +32,7 @@ object P14 {
     }
 
     println(longNum);
+    var timese: Long = System.currentTimeMillis;
+    println("Run Time: " + (timese - timess));
   }
 }
