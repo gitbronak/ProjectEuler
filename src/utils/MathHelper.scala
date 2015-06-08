@@ -1,6 +1,7 @@
 package utils
 
 import java.math._
+import java.util._
 
 /**
  * @author Ronak
@@ -100,7 +101,38 @@ object MathHelper {
     for (i <- 0 to (arr.length - 1)) {
       sum += arr(i);
     }
-    
+
     return sum;
+  }
+
+  /**
+   * Collatz sequence of a number can be found by
+   *
+   * n → n/2 (n is even)
+   * n → 3n + 1 (n is odd)
+   *
+   *
+   */
+  def getCollatzSequenceLength(value: Long, cacheHash: HashMap[Long, Long]): Long = {
+
+    var len: Long = 0;
+    
+    if (value == 1) {
+      return 1;
+    }
+
+    if (cacheHash.containsKey(value))
+      return cacheHash.get(value);
+    else {
+      if (value % 2 == 0) {
+        len = getCollatzSequenceLength((value / 2), cacheHash);
+        cacheHash.put(value, len + 1);
+        return (len + 1);
+      } else {
+        len = getCollatzSequenceLength(((3 * value) + 1), cacheHash);
+        cacheHash.put(value, len + 1);
+        return (len + 1);
+      }
+    }
   }
 }
