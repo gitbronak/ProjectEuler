@@ -45,4 +45,17 @@ object StringHelper {
     return prod;
   }
 
+  /**
+   * Find Sum of 'x' consecutive digits in a String starting index 'start'
+   */
+  def findSum(input: String, start: Int, x: Int): Long = {
+    var sum: Long = 0;
+    var i = 0;
+    var range: Int = start + x - 1;
+    for (i <- start to range) {
+      sum = sum + input.charAt(i).asDigit;
+    }
+    return sum;
+  }
+
 }
