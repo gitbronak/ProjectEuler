@@ -93,4 +93,14 @@ object MathHelper {
 
     return numOfDivisors;
   }
+
+  def getBigIntSum(arr: Array[BigInt]): BigInt = {
+    var sum: BigInt = 0;
+
+    for (i <- 0 to (arr.length - 1)) {
+      sum += arr(i);
+    }
+    
+    return sum;
+  }
 }
