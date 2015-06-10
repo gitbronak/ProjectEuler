@@ -1,8 +1,7 @@
 package problems
 
-import java.io._
-import java.net._
-import java.util._
+import java.net.URL
+import java.util.Scanner
 import utils.MathHelper
 
 /**

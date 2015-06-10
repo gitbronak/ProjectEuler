@@ -2,6 +2,9 @@ package utils
 
 import java.math._
 import java.util.HashMap
+import java.util.ArrayList
+import java.util.Collections
+import java.util.List
 
 /**
  * @author Ronak
@@ -116,22 +119,69 @@ object MathHelper {
   def getCollatzSequenceLength(value: Long, cacheHash: HashMap[Long, Long]): Long = {
 
     var len: Long = 0;
-    var v:Long = value;
+    var v: Long = value;
 
     while (v != 1) {
-      if(v < value){
+      if (v < value) {
         cacheHash.put(value, cacheHash.get(v) + len);
         return cacheHash.get(v) + len;
       }
-        
+
       if (v % 2 == 0)
         v /= 2;
       else
         v = (3 * v) + 1;
       len += 1;
     }
-    
+
     cacheHash.put(value, len);
     return len;
   }
+
+  /**
+   * Dynamic traversal of triangle to find max sum
+   *
+   * P18 and P67
+   */
+  def maxTriangleSum(tri: ArrayList[Int]): Long = {
+
+    if (tri.isEmpty())
+      return 0;
+
+    else {
+      var prev: List[Int] = tri.subList(0, 1);
+      var index: Int = 1;
+      var count: Int = 1;
+      var max: Int = -1;
+
+      while (index < tri.size()) {
+
+        var sublis: List[Int] = tri.subList(index, (index + count + 1));
+        val sublisCopy: ArrayList[Int] = new ArrayList[Int];
+
+        for (i <- 0 to sublis.size() - 1)
+          sublisCopy.add(i, sublis.get(i));
+
+        for (i <- 0 to prev.size() - 1) {
+          if ((prev.get(i) + sublisCopy.get(i)) > sublis.get(i))
+            sublis.set(i, (prev.get(i) + sublisCopy.get(i)));
+
+          if ((prev.get(i) + sublisCopy.get(i + 1)) > sublis.get(i + 1))
+            sublis.set(i + 1, (prev.get(i) + sublisCopy.get(i + 1)));
+        }
+
+        prev = sublis;
+        index += count + 1;
+        count += 1;
+      }
+      for (j <- 0 to (prev.size() - 1)) {
+        if (prev.get(j) > max)
+          max = prev.get(j);
+      }
+
+      return max;
+    }
+
+  }
+
 }
