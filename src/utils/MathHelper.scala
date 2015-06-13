@@ -184,4 +184,22 @@ object MathHelper {
 
   }
 
+  def fact(x: Int): BigInt = {
+    var fac: BigInt = 1;
+    for (i <- 1 to x) {
+      fac = fac * i;
+    }
+    return fac;
+  }
+
+  def digitSum(x: BigInt): Long = {
+    val str: String = x.toString();
+    var sum: Long = 0;
+
+    for (i <- 0 to str.length() - 1) {
+      sum += str.charAt(i).asDigit;
+    }
+    return sum;
+  }
+
 }

@@ -8,7 +8,8 @@ import utils.MathHelper
 /**
  * @author Ronak
  *
- *
+ * If all the numbers from 1 to 1000 (one thousand) inclusive were written out in words, 
+ * how many letters would be used?
  */
 
 object P17 {
