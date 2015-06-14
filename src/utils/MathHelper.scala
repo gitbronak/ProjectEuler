@@ -202,4 +202,26 @@ object MathHelper {
     return sum;
   }
 
+  /**
+   * Find the sum of all the divisors of "x".
+   */
+  def sumOfDivisors(x: Long): Long = {
+    var sum: Long = 1;
+    var limit: Long = x;
+    var index: Int = 2;
+
+    while (index < limit) {
+      if (x % index == 0) {
+        sum += index;
+        if (x / index != index)
+          sum += (x / index);
+        limit = x / index - 1;
+      } else
+        limit = x / index;
+      index += 1;
+    }
+
+    return sum;
+  }
+
 }

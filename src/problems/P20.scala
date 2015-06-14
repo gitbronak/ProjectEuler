@@ -12,6 +12,6 @@ object P20 {
   def main(arg: Array[String]) {
 
     println(MathHelper.digitSum(MathHelper.fact(100)));
-    
+
   }
 }
