@@ -58,4 +58,18 @@ object StringHelper {
     return sum;
   }
 
+  /**
+   * Get AlphaValue of a String
+   * Eg: aby = 1 + 2 + 25 =  28
+   *
+   */
+  def alphaValue(str: String): Long = {
+    var alpha: Long = 0;
+    for (c <- str) {
+      alpha += c.toUpper.toInt - 64;
+    }
+
+    return alpha;
+  }
+
 }
