@@ -224,4 +224,22 @@ object MathHelper {
     return sum;
   }
 
+  def fibonacci(index: Int, i1: BigInt = -1, i2: BigInt = -1): BigInt = {
+    if (i1 != -1 && i2 != -1) {
+      return (i1 + i2);
+    } else {
+      var prev1: BigInt = 1;
+      var prev2: BigInt = 1;
+      var current: BigInt = 1;
+
+      for (i <- 3 to index) {
+        current = prev1 + prev2;
+        prev1 = prev2;
+        prev2 = current;
+      }
+      return current;
+    }
+    return 0;
+  }
+
 }
