@@ -1,5 +1,7 @@
 package utils
 
+import java.util.ArrayList;
+
 /**
  * @author Ronak
  */
@@ -70,6 +72,20 @@ object StringHelper {
     }
 
     return alpha;
+  }
+
+  def permutation(prefix: String = "", str: String): ArrayList[String] = {
+    var n: Int = str.length();
+    var perm: ArrayList[String] = new ArrayList[String];
+
+    if (n == 0)
+      perm.add(prefix);
+    else {
+      for (i <- 0 to n - 1)
+        perm.addAll(permutation(prefix + str.charAt(i), str.substring(0, i) + str.substring(i + 1, n)));
+    }
+
+    return perm;
   }
 
 }
