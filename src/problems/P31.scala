@@ -3,8 +3,12 @@ package problems
 import java.util.HashMap
 
 /**
- * @author ronak
+ * @author Ronak
+ * 
+ * 
  */
+
+
 object P31 {
   def main(args: Array[String]) {
     println(waysCount(3));
