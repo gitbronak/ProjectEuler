@@ -1,67 +1,34 @@
 package problems
 
-import java.util.HashMap
+import java.util.ArrayList
 
 /**
  * @author Ronak
- * 
- * 
+ *
+ * How many different ways can £2 be made using any number of coins?
  */
-
 
 object P31 {
   def main(args: Array[String]) {
-    println(waysCount(3));
+    println(waysCount(200, Array(1, 2, 5, 10, 20, 50, 100, 200)));
   }
 
-  def waysCount(amount: Int, cacheHash: HashMap[Int, Long] = new HashMap[Int, Long]): Long = {
-    if (amount == 0)
-      return 1;
-    else if (amount < 0)
-      return 0;
-    else {
-      var count: Long = 0;
+  def waysCount(amount: Int, denomination: Array[Int]): Long = {
 
-      if (cacheHash.containsKey(amount))
-        return cacheHash.get(amount);
+    var waz: Array[Long] = new Array[Long](amount + 1);
+    waz(0) = 1;
 
-      count += waysCount(amount - 200, cacheHash);
-      if (count != 0)
-        cacheHash.put(amount - 200, count);
-
-      count += waysCount(amount - 100, cacheHash);
-      if (count != 0)
-        cacheHash.put(amount - 100, count);
-
-      count += waysCount(amount - 50, cacheHash);
-      if (count != 0)
-        cacheHash.put(amount - 50, count);
-
-      count += waysCount(amount - 20, cacheHash);
-      if (count != 0)
-        cacheHash.put(amount - 20, count);
-
-      count += waysCount(amount - 10, cacheHash);
-      if (count != 0)
-        cacheHash.put(amount - 10, count);
-
-      count += waysCount(amount - 5, cacheHash);
-      if (count != 0)
-        cacheHash.put(amount - 5, count);
-
-      count += waysCount(amount - 2, cacheHash);
-      if (count != 0)
-        cacheHash.put(amount - 2, count);
-
-      count += waysCount(amount - 1, cacheHash);
-      if (count != 0)
-        cacheHash.put(amount - 1, count);
-
-      println(cacheHash);
-      return count;
-      
+    for (i <- 1 to amount) {
+      waz(i) = 0;
     }
-    return 0;
+
+    for (j <- denomination) {
+      for (i <- j to amount) {
+        waz(i) = waz(i) + waz(i - j);
+      }
+    }
+
+    return waz(amount);
   }
 
 }
