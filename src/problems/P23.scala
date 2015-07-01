@@ -7,6 +7,8 @@ import java.util.HashMap
 
 /**
  * @author Ronak
+ * 
+ * Find the sum of all the positive integers which cannot be written as the sum of two abundant numbers.
  */
 
 object P23 {
